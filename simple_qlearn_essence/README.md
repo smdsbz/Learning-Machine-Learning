@@ -33,10 +33,12 @@ The optimum policy, which is obvious, is **feeding him every 10 seconds**.
 Type `./main.py` to run.
 After training, the following two images will pop out.  
 
-1. `time`-`hungriness` graph
+1. `time`-`hungriness` graph  
+
   ![time-hungriness-graph](./Figure_1.png)
 
-2. `hungriness`-`Q-val` graph
+2. `hungriness`-`Q-val` graph  
+
   ![hungriness-qval-graph](./Figure_1-1.png)
 
 **NOTE:** Result may _highly_ depends on your luck!  
