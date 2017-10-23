@@ -28,7 +28,7 @@ import matplotlib.pyplot as plt
 from random import random, gauss
 import math
 
-MAX_STEP = 10000
+MAX_STEP = 20000
 
 
 MAX_HUNGRINESS = 100
@@ -132,7 +132,7 @@ class Model(object):
             curr_hp = hungriness[t-1]
             pre_Q = self.Q[curr_hp]
             update_delta = (
-                (sigmoid(diff) - 0.5) * 1e+37
+                (sigmoid(diff / MAX_HUNGRINESS) - 0.5) * 1e+39
                 * (action["current"][curr_hp] - action["last"][curr_hp])
                 * math.exp(t - stat["time"][-1])
             )
@@ -207,7 +207,8 @@ if __name__ == '__main__':
         # He called for mom, gg
 
         plot_data["score_board"]["step"].append(step)
-        plot_data["score_board"]["score"].append(Bob.clock)
+        plot_data["score_board"]["score"].append(Bob.clock
+                                                 + sum(plot_data["hungriness"]))
 
         # Update policy
         if step > 0:
